@@ -1,7 +1,7 @@
 # Binary Flags API
 
 ## Overview
-The Binary Flags API is a .NET 9 application designed to manage and evaluate rules using binary flags. This API provides endpoints to create, retrieve, and delete rules, as well as evaluate them against specified conditions.
+The Binary Flags API is a .NET 9 application designed to manage and evaluate rules using binary flags. This API provides endpoints to process payments and evaluate fraud rules using a binary flag system.
 
 ## Project Structure
 ```
@@ -10,19 +10,27 @@ BinaryFlagsApi
 ├── src
 │   ├── BinaryFlagsApi
 │   │   ├── Controllers
-│   │   │   └── RulesController.cs
-│   │   ├── DTOs
-│   │   │   └── RuleDto.cs
-│   │   ├── Rules
-│   │   │   ├── RuleEngine.cs
-│   │   │   └── SampleRule.cs
+│   │   │   └── PaymentsController.cs
 │   │   ├── Program.cs
 │   │   ├── appsettings.json
 │   │   ├── appsettings.Development.json
-│   │   └── Startup.cs
+│   ├── Core
+│   │   ├── DTO's
+│   │   │   ├── PaymentDto.cs
+│   │   │   ├── FuturePaymentDto.cs
+│   │   │   └── ImmediatePaymentDto.cs
+│   │   ├── Enums
+│   │   │   └── FraudRuleFlags.cs
+│   ├── BinaryFlagRulesService
+│   │   ├── FraudRuleEngine.cs
+│   │   └── Rules
+│   │       ├── BaseFraudRule.cs
+│   │       ├── Rule1.cs
+│   │       ├── Rule2.cs
+│   │       └── Rule10.cs
 ├── tests
 │   ├── BinaryFlagsApi.Tests
-│   │   ├── RuleEngineTests.cs
+│   │   ├── FraudRuleEngineTests.cs
 │   │   └── TestHelpers
 │   │       └── MockData.cs
 ├── .editorconfig
@@ -31,38 +39,45 @@ BinaryFlagsApi
 ```
 
 ## Setup Instructions
-1. **Clone the Repository**
-   ```bash
-   git clone <repository-url>
-   cd BinaryFlagsApi
-   ```
 
-2. **Restore Dependencies**
-   Run the following command to restore the required NuGet packages:
-   ```bash
-   dotnet restore
-   ```
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd BinaryFlagsApi
+```
 
-3. **Run the Application**
-   To start the API, use the following command:
-   ```bash
-   dotnet run --project src/BinaryFlagsApi/BinaryFlagsApi.csproj
-   ```
+### 2. Restore Dependencies
+Run the following command to restore the required NuGet packages:
+```bash
+dotnet restore
+```
 
-4. **Access Swagger UI**
-   Once the application is running, you can access the Swagger UI at:
-   ```
-   http://localhost:5000/swagger
-   ```
+### 3. Run the Application
+To start the API, use the following command:
+```bash
+dotnet run --project src/BinaryFlagsApi/BinaryFlagsApi.csproj
+```
+
+### 4. Access Swagger UI
+Once the application is running, you can access the Swagger UI at:
+```
+http://localhost:5000/swagger
+```
 
 ## Logging
-This project uses Serilog for logging. Ensure that the logging configuration is set up in `appsettings.json` to capture logs as needed.
+This project uses Serilog for logging. Logs are written to both the console and a rolling file (`logs/log-.txt`). Ensure that the logging configuration is set up in `appsettings.json` to capture logs as needed.
 
 ## Testing
 Unit tests are located in the `tests/BinaryFlagsApi.Tests` directory. To run the tests, use the following command:
 ```bash
 dotnet test
 ```
+
+## Key Features
+- **Binary Flag System**: Uses the `FraudRuleFlags` enum to represent rules as binary flags.
+- **Polymorphic Payment Processing**: Accepts abstract `PaymentDto` objects and processes derived types like `FuturePaymentDto` and `ImmediatePaymentDto`.
+- **Fraud Rule Engine**: Evaluates fraud rules using the `FraudRuleEngine` and custom rule classes.
+- **Swagger Integration**: Provides an interactive API documentation and testing interface.
 
 ## Contributing
 Contributions are welcome! Please submit a pull request or open an issue for any enhancements or bug fixes.

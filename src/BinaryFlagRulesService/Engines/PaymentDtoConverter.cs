@@ -4,6 +4,8 @@ using System.Text.Json.Serialization;
 using Core.DTOs;
 using Core.Enums;
 
+namespace Engines;
+
 public class PaymentDtoConverter : JsonConverter<PaymentDto>
 {
     public override PaymentDto? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

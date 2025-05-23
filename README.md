@@ -1,86 +1,102 @@
-# Binary Flags API
+# 🛡️ BinaryFlagsApi
 
-## Overview
-The Binary Flags API is a .NET 9 application designed to manage and evaluate rules using binary flags. This API provides endpoints to process payments and evaluate fraud rules using a binary flag system.
+A modular, test-driven fraud rules engine built in .NET 9.0. It processes various payment types (e.g. immediate, future, standing orders) using a binary flag-based rule execution system. Rules are configurable via `appsettings.json`, and new rules can be added without modifying core logic.
 
-## Project Structure
+---
+
+## 📦 Features
+
+- ✅ Binary `[Flags]` enum for rule activation
+- ⚙️ Polymorphic deserialization of `PaymentDto` using custom JSON converters
+- 🔁 Rule configuration driven from `appsettings.json`
+- 🧪 xUnit test coverage across DTOs, logic, and controllers
+- 📊 Logging via `Serilog`
+- 🔍 Swagger for API exploration
+- 💡 Extensible rule system (`Rule1` through `Rule10`)
+
+---
+
+## 🗂️ Project Structure
+
 ```
-BinaryFlagsApi
-├── BinaryFlagsApi.sln
-├── src
-│   ├── BinaryFlagsApi
-│   │   ├── Controllers
-│   │   │   └── PaymentsController.cs
-│   │   ├── Program.cs
-│   │   ├── appsettings.json
-│   │   ├── appsettings.Development.json
-│   ├── Core
-│   │   ├── DTO's
-│   │   │   ├── PaymentDto.cs
-│   │   │   ├── FuturePaymentDto.cs
-│   │   │   └── ImmediatePaymentDto.cs
-│   │   ├── Enums
-│   │   │   └── FraudRuleFlags.cs
-│   ├── BinaryFlagRulesService
-│   │   ├── FraudRuleEngine.cs
-│   │   └── Rules
-│   │       ├── BaseFraudRule.cs
-│   │       ├── Rule1.cs
-│   │       ├── Rule2.cs
-│   │       └── Rule10.cs
-├── tests
-│   ├── BinaryFlagsApi.Tests
-│   │   ├── FraudRuleEngineTests.cs
-│   │   └── TestHelpers
-│   │       └── MockData.cs
-├── .editorconfig
-├── .gitignore
-└── README.md
+BinaryFlagsApi/
+├── src/
+│   ├── Core                    # Shared enums, models, DTOs
+│   ├── BinaryFlagRulesService # Rule logic + engine
+│   └── BinaryFlagsApi         # Main API with Swagger + Controllers
+├── tests/
+│   ├── Core.Tests
+│   ├── BinaryFlagRulesService.Tests
+│   └── BinaryFlagsApi.Tests
 ```
 
-## Setup Instructions
+---
 
-### 1. Clone the Repository
-```bash
-git clone <repository-url>
-cd BinaryFlagsApi
-```
+## 🧪 Run Tests
 
-### 2. Restore Dependencies
-Run the following command to restore the required NuGet packages:
-```bash
-dotnet restore
-```
-
-### 3. Run the Application
-To start the API, use the following command:
-```bash
-dotnet run --project src/BinaryFlagsApi/BinaryFlagsApi.csproj
-```
-
-### 4. Access Swagger UI
-Once the application is running, you can access the Swagger UI at:
-```
-http://localhost:5000/swagger
-```
-
-## Logging
-This project uses Serilog for logging. Logs are written to both the console and a rolling file (`logs/log-.txt`). Ensure that the logging configuration is set up in `appsettings.json` to capture logs as needed.
-
-## Testing
-Unit tests are located in the `tests/BinaryFlagsApi.Tests` directory. To run the tests, use the following command:
 ```bash
 dotnet test
 ```
 
-## Key Features
-- **Binary Flag System**: Uses the `FraudRuleFlags` enum to represent rules as binary flags.
-- **Polymorphic Payment Processing**: Accepts abstract `PaymentDto` objects and processes derived types like `FuturePaymentDto` and `ImmediatePaymentDto`.
-- **Fraud Rule Engine**: Evaluates fraud rules using the `FraudRuleEngine` and custom rule classes.
-- **Swagger Integration**: Provides an interactive API documentation and testing interface.
+Covers:
 
-## Contributing
-Contributions are welcome! Please submit a pull request or open an issue for any enhancements or bug fixes.
+- ✅ Rule execution (`Rule1`–`Rule10`)
+- ✅ FraudRuleEngine logic
+- ✅ Payment polymorphism + JSON handling
+- ✅ Controller integration
+- ✅ Enum extension and flag behavior
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+---
+
+## 🔧 Configuration
+
+Defined in `appsettings.json`:
+
+```json
+"FraudRules": {
+  "ImmediatePayment": "Rule1,Rule4,Rule5",
+  "FuturePayment": "Rule2,Rule3,Rule6",
+  "StandardOrder": "Rule7,Rule8,Rule9,Rule10"
+}
+```
+
+Each entry maps a payment type to a bitmask combination of rule flags. The `PaymentRuleFactory` uses this to inject `RulesToRun` into the DTO before execution.
+
+---
+
+## ▶️ Run Locally
+
+```bash
+dotnet run --project src/BinaryFlagsApi/BinaryFlagsApi.csproj
+```
+
+Then visit:
+
+```
+https://localhost:5001/swagger
+```
+
+---
+
+## 🧩 Extending
+
+To add a new fraud rule:
+
+1. Create a new class `Rule11.cs` implementing `BaseFraudRule<Rule11>`
+2. Define a new flag in `FraudRuleFlags`
+3. Add to `appsettings.json` where relevant
+4. Write a unit test in `RuleTests.cs`
+
+---
+
+## 📜 License
+
+MIT — free to use and modify. Contributions welcome.
+
+---
+
+## 🙌 Credits
+
+- Built with [.NET 9](https://dotnet.microsoft.com/)
+- Testing with [xUnit](https://xunit.net/), [Moq](https://github.com/moq/moq4), [FluentAssertions](https://fluentassertions.com/)
+- API documentation via [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)

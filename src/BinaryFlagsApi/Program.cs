@@ -60,7 +60,11 @@ try
 
 
     // Register controllers
-    builder.Services.AddControllers();
+    builder.Services.AddControllers().AddJsonOptions(opts =>
+    {
+        opts.JsonSerializerOptions.Converters.Add(new PaymentDtoConverter());
+    });
+
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
     builder.WebHost.ConfigureKestrel(options =>

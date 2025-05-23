@@ -9,4 +9,5 @@ public abstract class PaymentDto
     public FraudRuleFlags RulesToRun { get; set; }
     public int PaymentId { get; set; }
     public decimal Amount { get; set; }
+    public PaymentType PaymentType { get; set; } = PaymentType.Unknown;
 }

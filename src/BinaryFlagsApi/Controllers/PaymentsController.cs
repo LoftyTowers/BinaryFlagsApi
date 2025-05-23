@@ -6,6 +6,7 @@ using Core.DTOs;
 using Engines;
 using Configs;
 using Factories;
+using Core.Extensions;
 
 namespace Controllers;
 
@@ -37,7 +38,7 @@ public PaymentsController(
             return BadRequest("Payment cannot be null.");
         }
 
-        var paymentType = payment.GetType().Name;
+        var paymentType = payment.PaymentType.GetDisplayName();
         _logger.LogInformation("Processing payment of type {PaymentType}", paymentType);
 
         // Assign fraud flags based on config
@@ -57,7 +58,7 @@ public PaymentsController(
             _logger.LogInformation("Payment passed fraud checks.");
             return Ok(new
             {
-                Message = "Payment failed fraud checks.",
+                Message = "Payment passed fraud checks.",
                 PaymentType = paymentType,
                 Passed = allPassed,
                 RuleResults = results

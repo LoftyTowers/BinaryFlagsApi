@@ -56,7 +56,7 @@ Defined in `appsettings.json`:
 "FraudRules": {
   "ImmediatePayment": "Rule1,Rule4,Rule5",
   "FuturePayment": "Rule2,Rule3,Rule6",
-  "StandardOrder": "Rule7,Rule8,Rule9,Rule10"
+  "StandingOrder": "Rule7,Rule8,Rule9,Rule10"
 }
 ```
 

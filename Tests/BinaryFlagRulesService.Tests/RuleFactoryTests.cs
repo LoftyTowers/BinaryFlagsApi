@@ -24,14 +24,14 @@ public class RuleFactoryTests
         {
             ImmediatePayment = "Rule1,Rule4,Rule5",
             FuturePayment = "Rule2,Rule3,Rule6",
-            StandardOrder = "Rule7,Rule8,Rule9,Rule10"
+            StandingOrder = "Rule7,Rule8,Rule9,Rule10"
         });
     }
 
     [Theory]
     [InlineData(typeof(ImmediatePaymentDto), FraudRuleFlags.Rule1 | FraudRuleFlags.Rule4 | FraudRuleFlags.Rule5)]
     [InlineData(typeof(FuturePaymentDto), FraudRuleFlags.Rule2 | FraudRuleFlags.Rule3 | FraudRuleFlags.Rule6)]
-    [InlineData(typeof(StandardOrderDto), FraudRuleFlags.Rule7 | FraudRuleFlags.Rule8 | FraudRuleFlags.Rule9 | FraudRuleFlags.Rule10)]
+    [InlineData(typeof(StandingOrderDto), FraudRuleFlags.Rule7 | FraudRuleFlags.Rule8 | FraudRuleFlags.Rule9 | FraudRuleFlags.Rule10)]
     public void AssignRules_Should_Set_Correct_RulesToRun(Type dtoType, FraudRuleFlags expectedFlags)
     {
         // Arrange

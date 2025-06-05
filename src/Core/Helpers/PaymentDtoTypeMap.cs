@@ -9,7 +9,7 @@ public static class PaymentDtoTypeMap
     {
         { PaymentType.ImediatePayment, typeof(ImmediatePaymentDto) },
         { PaymentType.FuturePayemnt, typeof(FuturePaymentDto) },
-        { PaymentType.StandingOrder, typeof(StandardOrderDto) }
+        { PaymentType.StandingOrder, typeof(StandingOrderDto) }
     };
 
     public static Type? GetType(PaymentType paymentType)

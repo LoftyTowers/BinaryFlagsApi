@@ -9,7 +9,7 @@ public class FraudRulesConfig
 {
     public string ImmediatePayment { get; set; }
     public string FuturePayment { get; set; }
-    public string StandardOrder { get; set; }
+    public string StandingOrder { get; set; }
 
     public Dictionary<string, FraudRuleFlags> ToFlagMap()
     {
@@ -17,7 +17,7 @@ public class FraudRulesConfig
         {
             { nameof(ImmediatePaymentDto), ParseFlags(ImmediatePayment) },
             { nameof(FuturePaymentDto), ParseFlags(FuturePayment) },
-            { nameof(StandardOrderDto), ParseFlags(StandardOrder) }
+            { nameof(StandingOrderDto), ParseFlags(StandingOrder) }
         };
     }
 

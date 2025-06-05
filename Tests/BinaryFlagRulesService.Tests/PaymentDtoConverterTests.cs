@@ -23,7 +23,7 @@ public class PaymentDtoConverterTests
     [Theory]
     [InlineData("{\"paymentType\":10,\"amount\":100}", typeof(FuturePaymentDto))]
     [InlineData("{\"paymentType\":20,\"amount\":200}", typeof(ImmediatePaymentDto))]
-    [InlineData("{\"paymentType\":30,\"amount\":300}", typeof(StandardOrderDto))]
+    [InlineData("{\"paymentType\":30,\"amount\":300}", typeof(StandingOrderDto))]
     public void Should_Deserialize_To_Correct_Derived_Type(string json, Type expectedType)
     {
         // Act

@@ -50,9 +50,6 @@ public PaymentsController(
 
         _logger.LogInformation("Fraud check result for {PaymentType}: {Result}", paymentType, allPassed ? "Passed" : "Failed");
 
-         // Run the fraud rules using the FraudRuleEngine
-        var result = _fraudRuleEngine.RunRules(payment);
-
         if (allPassed)
         {
             _logger.LogInformation("Payment passed fraud checks.");

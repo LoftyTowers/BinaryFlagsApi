@@ -11,13 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Core\Core.cspro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryFlagRulesService", "src\BinaryFlagRulesService\BinaryFlagRulesService.csproj", "{AFF8B29E-FD93-47F9-AE67-110DC73DCBE8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryFlagsApi.Tests", "tests\BinaryFlagsApi.Tests\BinaryFlagsApi.Tests.csproj", "{3B9D48CD-BB59-47FE-8C1B-A9D7E4A2D4D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryFlagsApi.Tests", "Tests\BinaryFlagsApi.Tests\BinaryFlagsApi.Tests.csproj", "{3B9D48CD-BB59-47FE-8C1B-A9D7E4A2D4D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "tests\Core.Tests\Core.Tests.csproj", "{4216DE8F-C8A5-43D0-9B3D-5F6DD790A864}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "Tests\Core.Tests\Core.Tests.csproj", "{4216DE8F-C8A5-43D0-9B3D-5F6DD790A864}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryFlagRulesService.Tests", "tests\BinaryFlagRulesService.Tests\BinaryFlagRulesService.Tests.csproj", "{185AFD8C-5B0E-4836-8142-A6830D16D610}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryFlagRulesService.Tests", "Tests\BinaryFlagRulesService.Tests\BinaryFlagRulesService.Tests.csproj", "{185AFD8C-5B0E-4836-8142-A6830D16D610}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

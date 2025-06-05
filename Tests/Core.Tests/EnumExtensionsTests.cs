@@ -10,8 +10,8 @@ public class EnumExtensionsTests
 {
     [Theory]
     [InlineData(PaymentType.Unknown, "Unknown")]
-    [InlineData(PaymentType.FuturePayemnt, "Future Payment")]
-    [InlineData(PaymentType.ImediatePayment, "Immediate Payment")]
+    [InlineData(PaymentType.FuturePayment, "Future Payment")]
+    [InlineData(PaymentType.ImmediatePayment, "Immediate Payment")]
     [InlineData(PaymentType.StandingOrder, "Standing Order")]
     public void GetDisplayName_Should_Return_DisplayNameAttribute(PaymentType input, string expected)
     {

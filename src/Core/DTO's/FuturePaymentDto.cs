@@ -4,5 +4,5 @@ namespace Core.DTOs;
 
 public class FuturePaymentDto : PaymentDto
 {
-    public FuturePaymentDto() => PaymentType = PaymentType.FuturePayemnt;
+    public FuturePaymentDto() => PaymentType = PaymentType.FuturePayment;
 }

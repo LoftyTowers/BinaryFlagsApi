@@ -7,9 +7,9 @@ public static class PaymentDtoTypeMap
 {
     private static readonly Dictionary<PaymentType, Type> Map = new()
     {
-        { PaymentType.ImmediatePayment, typeof(ImmediatePaymentDto) },
-        { PaymentType.FuturePayment, typeof(FuturePaymentDto) },
-        { PaymentType.StandingOrder, typeof(StandardOrderDto) }
+      [InlineData(PaymentType.ImmediatePayment, typeof(ImmediatePaymentDto))]
+      [InlineData(PaymentType.FuturePayemnt, typeof(FuturePaymentDto))]
+      [InlineData(PaymentType.StandingOrder, typeof(StandingOrderDto))]
     };
 
     public static Type? GetType(PaymentType paymentType)

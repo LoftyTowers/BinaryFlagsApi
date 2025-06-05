@@ -22,8 +22,8 @@ namespace BinaryFlagRulesService.Tests
                 new object[] { new Rule2(Mock.Of<ILogger<Rule2>>()), new FuturePaymentDto { Amount = 199 }, true },
 
                 // Rule3: Fail if Amount > 300
-                new object[] { new Rule3(Mock.Of<ILogger<Rule3>>()), new StandardOrderDto { Amount = 350 }, false },
-                new object[] { new Rule3(Mock.Of<ILogger<Rule3>>()), new StandardOrderDto { Amount = 250 }, true },
+                new object[] { new Rule3(Mock.Of<ILogger<Rule3>>()), new StandingOrderDto { Amount = 350 }, false },
+                new object[] { new Rule3(Mock.Of<ILogger<Rule3>>()), new StandingOrderDto { Amount = 250 }, true },
 
                 // Rule4: Fail if Amount > 400
                 new object[] { new Rule4(Mock.Of<ILogger<Rule4>>()), new ImmediatePaymentDto { Amount = 450 }, false },
@@ -38,8 +38,8 @@ namespace BinaryFlagRulesService.Tests
                 new object[] { new Rule6(Mock.Of<ILogger<Rule6>>()), new ImmediatePaymentDto { Amount = 550 }, true },
 
                 // Rule7: Fail if Amount > 700
-                new object[] { new Rule7(Mock.Of<ILogger<Rule7>>()), new StandardOrderDto { Amount = 750 }, false },
-                new object[] { new Rule7(Mock.Of<ILogger<Rule7>>()), new StandardOrderDto { Amount = 650 }, true },
+                new object[] { new Rule7(Mock.Of<ILogger<Rule7>>()), new StandingOrderDto { Amount = 750 }, false },
+                new object[] { new Rule7(Mock.Of<ILogger<Rule7>>()), new StandingOrderDto { Amount = 650 }, true },
 
                 // Rule8: Fail if Amount > 800
                 new object[] { new Rule8(Mock.Of<ILogger<Rule8>>()), new ImmediatePaymentDto { Amount = 850 }, false },

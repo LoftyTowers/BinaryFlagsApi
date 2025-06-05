@@ -8,8 +8,8 @@ namespace Core.Tests;
 public class PaymentDtoTypeMapTests
 {
     [Theory]
-    [InlineData(PaymentType.ImediatePayment, typeof(ImmediatePaymentDto))]
-    [InlineData(PaymentType.FuturePayemnt, typeof(FuturePaymentDto))]
+    [InlineData(PaymentType.ImmediatePayment, typeof(ImmediatePaymentDto))]
+    [InlineData(PaymentType.FuturePayment, typeof(FuturePaymentDto))]
     [InlineData(PaymentType.StandingOrder, typeof(StandardOrderDto))]
     public void Should_Return_Correct_Type_For_Known_Enum(PaymentType type, Type expectedDtoType)
     {

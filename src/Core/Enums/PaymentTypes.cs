@@ -8,10 +8,10 @@ public enum PaymentType
     Unknown = 0,
 
     [Display(Name = "Future Payment")]
-    FuturePayemnt = 10,
+    FuturePayment = 10,
 
     [Display(Name = "Immediate Payment")]
-    ImediatePayment = 20,
+    ImmediatePayment = 20,
 
     [Display(Name = "Standing Order")]
     StandingOrder = 30

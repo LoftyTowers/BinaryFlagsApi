@@ -39,12 +39,12 @@ public class PaymentsControllerTests
     public void ProcessPayment_Should_Return_Ok_When_All_Rules_Pass()
     {
         // Arrange
-        var payment = new ImmediatePaymentDto { Amount = 100, PaymentType = PaymentType.ImediatePayment };
+        var payment = new ImmediatePaymentDto { Amount = 100, PaymentType = PaymentType.ImmediatePayment };
 
         var enriched = new ImmediatePaymentDto
         {
             Amount = 100,
-            PaymentType = PaymentType.ImediatePayment,
+            PaymentType = PaymentType.ImmediatePayment,
             RulesToRun = FraudRuleFlags.Rule1 | FraudRuleFlags.Rule2
         };
 
@@ -68,12 +68,12 @@ public class PaymentsControllerTests
     [Fact]
     public void ProcessPayment_Should_Return_BadRequest_When_Any_Rule_Fails()
     {
-        var payment = new FuturePaymentDto { Amount = 999, PaymentType = PaymentType.FuturePayemnt };
+        var payment = new FuturePaymentDto { Amount = 999, PaymentType = PaymentType.FuturePayment };
 
         var enriched = new FuturePaymentDto
         {
             Amount = 999,
-            PaymentType = PaymentType.FuturePayemnt,
+            PaymentType = PaymentType.FuturePayment,
             RulesToRun = FraudRuleFlags.Rule3
         };
 
